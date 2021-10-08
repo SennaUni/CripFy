@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="700.0" prefWidth="900.0">
+         <left>
+            <VBox prefHeight="700.0" prefWidth="170.0" style="-fx-background-color: #33cccc;" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets left="20.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <Label text="Meus favoritos" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Minha carteira" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Simular compra" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Simular venda" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Minha conta" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="400.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <Pane prefHeight="614.0" prefWidth="734.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="14.0" layoutY="66.0" prefHeight="130.0" prefWidth="705.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #33cccc; -fx-background-radius: 10;">
+                           <HBox.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Titulo" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="53.0" text="Moeda" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="91.0" text="Descrição" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #33cccc; -fx-background-radius: 10;">
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Titulo" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="53.0" text="Moeda" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="91.0" text="Descrição" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #33cccc; -fx-background-radius: 10;">
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Titulo" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="53.0" text="Moeda" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="16.0" layoutY="91.0" text="Descrição" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <Label layoutX="45.0" layoutY="14.0" text="Dashboard" textFill="#33cccc">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TableView layoutX="17.0" layoutY="224.0" prefHeight="409.0" prefWidth="699.0" style="-fx-border-color: #33cccc;">
+                    <columns>
+                      <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                      <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </center>
+         <top>
+            <Pane prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: #33cccc;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="56.0" layoutY="11.0" text="Cripfy" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="167.0" layoutY="13.0" prefHeight="30.0" prefWidth="714.0" text="Olá, Fulano" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
