@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrincipalFxml">
    <children>
       <BorderPane prefHeight="700.0" prefWidth="900.0">
          <left>
@@ -20,7 +20,7 @@
                   <Insets left="20.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <Label text="Meus favoritos" textFill="WHITE">
+                  <Label onMouseClicked="#clickFavoritos" text="Meus favoritos" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -28,7 +28,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Minha carteira" textFill="WHITE">
+                  <Label onMouseClicked="#clickCarteira" text="Minha carteira" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -36,7 +36,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Simular compra" textFill="WHITE">
+                  <Label onMouseClicked="#clickSimularCompra" text="Simular compra" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -44,7 +44,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Simular venda" textFill="WHITE">
+                  <Label onMouseClicked="#clickSimularVenda" text="Simular venda" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
