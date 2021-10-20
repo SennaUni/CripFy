@@ -3,6 +3,7 @@ package controller;
 import java.sql.SQLException;
 
 import entity.User;
+import util.UserLogado;
 
 public class UserController implements IUserController{
 
@@ -10,9 +11,14 @@ public class UserController implements IUserController{
 	public Boolean authUser(User u) throws ClassNotFoundException, SQLException {	
 		UserDao uDao = new UserDao();
 		
-		Boolean logIn = uDao.authUser(u);
+		User userLog = uDao.authUser(u);
 		
-		return logIn;
+		if(userLog == null) {
+			return false;
+		} else {
+			UserLogado.setUserLogado(userLog);
+			return true;
+		}
 	}
 
 	@Override

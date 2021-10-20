@@ -80,9 +80,9 @@ public class UserFxml {
     			u.setEmail(txtLoginEmail.getText());
     			u.setSenha(txtLoginSenha.getText());
     			
-            	Boolean result = userController.authUser(u);
+            	Boolean userLog = userController.authUser(u);
             	
-            	if (result) {
+            	if (userLog) {
             		SetPages.HomePage(event);
             	} else {
             		JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -96,6 +96,8 @@ public class UserFxml {
         		
     		} catch (ClassNotFoundException | SQLException e) {
     			JOptionPane.showMessageDialog(null, "Erro na autenticação!" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
+    			lblCaptcha.setText(util.getCaptcha());
+    			count++;
     		}	
 		
     	}

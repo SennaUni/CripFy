@@ -98,15 +98,10 @@
                   </Label>
                   <TableView fx:id="tbMoedas" layoutX="17.0" layoutY="132.0" prefHeight="501.0" prefWidth="699.0" style="-fx-border-color: #33cccc;">
                     <columns>
-                      <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                      <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
+                      <TableColumn fx:id="id" prefWidth="50.0" style="-fx-background-color: #33cccc;" text="ID" />
+                        <TableColumn fx:id="descrCoin" prefWidth="325.0" style="-fx-background-color: #33cccc;" text="DESCRIÇÃO MOEDA" />
+                        <TableColumn fx:id="codeApi" prefWidth="148.0" style="-fx-background-color: #33cccc;" text="CODE API" />
+                        <TableColumn fx:id="remove" prefWidth="174.0" style="-fx-background-color: #33cccc;" text="REMOVER" />
                     </columns>
                   </TableView>
                </children>
@@ -120,7 +115,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="167.0" layoutY="13.0" prefHeight="30.0" prefWidth="714.0" text="Olá, Fulano" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+                  <Label fx:id="lblUser" alignment="CENTER_RIGHT" layoutX="167.0" layoutY="13.0" prefHeight="30.0" prefWidth="714.0" text="Olá, Fulano" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

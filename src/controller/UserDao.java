@@ -37,7 +37,7 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public Boolean authUser(User u) throws SQLException {
+	public User authUser(User u) throws SQLException {
 		String sql = "SELECT * FROM Tb_Usuario WHERE email = ? AND senha = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
@@ -50,12 +50,21 @@ public class UserDao implements IUserDao{
 		
 		System.out.println(rs);
 		
-		if (rs.next()) {
-			ps.close();
-			return true;
+		User user = new User();
+		
+		if(rs.next()) {
+			user.setId(rs.getLong("id"));
+			user.setUserName(rs.getString("userName"));
+			user.setContato(rs.getString("contato"));
+			user.setSenha(rs.getString("senha"));
+			user.setEmail(rs.getString("email"));
+			user.setPreferencias(rs.getString("status_preferencia"));
+			user.setDataCriacao(rs.getTimestamp("data_Criacao"));
+			user.setDataEdicao(rs.getTimestamp("data_Edicao"));
 		} else {
-			ps.close();
-			return false;
+			user = null;
 		}
+		
+		return user;
 	}
 }

@@ -7,5 +7,5 @@ import entity.User;
 public interface IUserDao {
 
 	public void createUser(User u) throws SQLException;
-	public Boolean authUser(User u) throws SQLException;
+	public User authUser(User u) throws SQLException;
 }

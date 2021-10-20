@@ -3,10 +3,16 @@ package controller;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import util.UserLogado;
+import util.SetPages;
 
 public class PrincipalFxml {
 
+    @FXML
+    private Label lblUser;
+    
     @FXML
     void clickCarteira(MouseEvent event) {
     	
@@ -14,7 +20,7 @@ public class PrincipalFxml {
 
     @FXML
     void clickFavoritos(MouseEvent event) throws IOException {
-    	util.SetPages.FavPage(event);
+    	SetPages.FavPage(event);
     }
 
     @FXML
@@ -26,4 +32,8 @@ public class PrincipalFxml {
     void clickSimularVenda(MouseEvent event) {
 
     }
+    
+    public void initialize() {
+    	lblUser.setText("Seja bem vindo(a), "+ UserLogado.getUserName());
+	}
 }

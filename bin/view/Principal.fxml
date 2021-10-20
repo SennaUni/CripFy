@@ -174,7 +174,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER_RIGHT" layoutX="167.0" layoutY="13.0" prefHeight="30.0" prefWidth="714.0" text="Olá, Fulano" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+                  <Label fx:id="lblUser" alignment="CENTER_RIGHT" layoutX="167.0" layoutY="13.0" prefHeight="30.0" prefWidth="714.0" text="Olá, Fulano" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
