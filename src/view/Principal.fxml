@@ -52,7 +52,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Minha conta" textFill="WHITE">
+                  <Label onMouseClicked="#clickMinhaConta" text="Minha conta" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

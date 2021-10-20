@@ -33,6 +33,12 @@ public class PrincipalFxml {
 
     }
     
+    @FXML
+    void clickMinhaConta(MouseEvent event) throws IOException {
+    	System.out.println("dadasd");
+    	SetPages.PerfilPage(event);
+    }
+    
     public void initialize() {
     	lblUser.setText("Seja bem vindo(a), "+ UserLogado.getUserName());
 	}
