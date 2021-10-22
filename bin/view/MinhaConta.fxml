@@ -21,6 +21,11 @@
                   <Insets left="20.0" right="10.0" top="10.0" />
                </padding>
                <children>
+                  <Label onMouseClicked="#clickDashboard" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
                   <Label onMouseClicked="#clickFavoritos" text="Meus favoritos" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
@@ -53,12 +58,12 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Minha conta" textFill="WHITE">
+                  <Label onMouseClicked="#clickMinhaConta" text="Minha conta" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="400.0" />
+                        <Insets top="380.0" />
                      </VBox.margin>
                   </Label>
                </children>
@@ -174,12 +179,48 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="tBoxSenha" layoutX="438.0" layoutY="456.0" prefHeight="25.0" prefWidth="165.0" visible="false" />
-                  <PasswordField fx:id="tBoxNovaSenha" layoutX="140.0" layoutY="504.0" prefHeight="25.0" prefWidth="163.0" visible="false" />
-                  <PasswordField fx:id="tBoxConfirmarSenha" layoutX="438.0" layoutY="504.0" prefHeight="25.0" prefWidth="165.0" visible="false" />
-                  <TextField fx:id="tBoxNome" layoutX="139.0" layoutY="367.0" prefHeight="25.0" prefWidth="466.0" visible="false" />
-                  <TextField fx:id="tBoxContato" layoutX="139.0" layoutY="456.0" prefHeight="25.0" prefWidth="165.0" visible="false" />
-                  <TextField fx:id="tBoxEmail" layoutX="139.0" layoutY="408.0" prefHeight="25.0" prefWidth="466.0" visible="false" />
+                  <PasswordField fx:id="tBoxSenha" layoutX="438.0" layoutY="456.0" prefHeight="25.0" prefWidth="165.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></PasswordField>
+                  <PasswordField fx:id="tBoxNovaSenha" layoutX="140.0" layoutY="504.0" prefHeight="25.0" prefWidth="163.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></PasswordField>
+                  <PasswordField fx:id="tBoxConfirmarSenha" layoutX="438.0" layoutY="504.0" prefHeight="25.0" prefWidth="165.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></PasswordField>
+                  <TextField fx:id="tBoxNome" layoutX="139.0" layoutY="367.0" prefHeight="25.0" prefWidth="466.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
+                  <TextField fx:id="tBoxContato" layoutX="139.0" layoutY="456.0" prefHeight="25.0" prefWidth="165.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
+                  <TextField fx:id="tBoxEmail" layoutX="139.0" layoutY="408.0" prefHeight="25.0" prefWidth="466.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></TextField>
                   <Button fx:id="btnEditar" layoutX="217.0" layoutY="564.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="30.0" prefWidth="271.0" style="-fx-background-color: #33cccc;" text="Editar Cadastro" textFill="WHITE" visible="false">
                      <font>
                         <Font name="System Bold" size="14.0" />

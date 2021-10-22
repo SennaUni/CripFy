@@ -27,4 +27,23 @@ public class UserController implements IUserController{
 		
 		uDao.createUser(u);
 	}
+
+	@Override
+	public void updateUser(User u) throws ClassNotFoundException, SQLException {
+		UserDao uDao = new UserDao();
+		
+		uDao.updateUser(u);
+		
+		User userLog = uDao.getUserById(u);
+		
+		UserLogado.setUserLogado(userLog);
+	}
+
+	@Override
+	public void deleteUser(User u) throws ClassNotFoundException, SQLException {
+		UserDao uDao = new UserDao();
+		
+		uDao.deleteUser(u);
+	}
+	
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.TrayIcon.MessageType;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import util.SetPages;
 import util.UserLogado;
 
 
@@ -95,6 +98,37 @@ public class FavoritosFxml {
         		JOptionPane.showMessageDialog(null, "Não é possível adicionar moedas iguais aos favoritos!", "ERRO", JOptionPane.ERROR_MESSAGE);
         	}
     	}
+
+    }
+    
+
+    @FXML
+    void clickDashboard(MouseEvent event) throws IOException {
+    	SetPages.HomePage(event);
+    }
+
+    @FXML
+    void clickFavoritos(MouseEvent event) throws IOException {
+    	SetPages.FavPage(event);
+    }
+
+    @FXML
+    void clickMinhaCarteira(MouseEvent event) {
+
+    }
+
+    @FXML
+    void clickMinhaConta(MouseEvent event) throws IOException {
+    	SetPages.PerfilPage(event);
+    }
+
+    @FXML
+    void clickSimularCompra(MouseEvent event) {
+
+    }
+
+    @FXML
+    void clickSimularVenda(MouseEvent event) {
 
     }
     

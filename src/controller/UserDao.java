@@ -67,4 +67,64 @@ public class UserDao implements IUserDao{
 		
 		return user;
 	}
+
+	@Override
+	public void updateUser(User u) throws SQLException {
+		String sql = "UPDATE Tb_Usuario"
+				+ " SET userName = ?, contato = ?, senha = ?, email = ?, data_Edicao = ?"
+				+ " WHERE id = ?";
+		
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1, u.getUserName());
+		ps.setString(2, u.getContato());
+		ps.setString(3, u.getSenha());
+		ps.setString(4, u.getEmail());
+		ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+		ps.setLong(6, u.getId());
+		
+		ps.execute();
+		ps.close();
+	}
+
+	@Override
+	public User getUserById(User u) throws SQLException {
+		
+		String sql = "SELECT * FROM Tb_Usuario WHERE id = ?";
+		
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setLong(1, u.getId());
+		
+		ps.execute();
+		
+		ResultSet rs = ps.executeQuery();
+		
+		User user = new User();
+		
+		if(rs.next()) {
+			user.setId(rs.getLong("id"));
+			user.setUserName(rs.getString("userName"));
+			user.setContato(rs.getString("contato"));
+			user.setSenha(rs.getString("senha"));
+			user.setEmail(rs.getString("email"));
+			user.setPreferencias(rs.getString("status_preferencia"));
+			user.setDataCriacao(rs.getTimestamp("data_Criacao"));
+			user.setDataEdicao(rs.getTimestamp("data_Edicao"));
+		} else {
+			user = null;
+		}
+		
+		return user;
+	}
+
+	@Override
+	public void deleteUser(User u) throws SQLException {
+		String sql = "DELETE Tb_Usuario WHERE id = ?";
+		
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setLong(1, u.getId());
+		
+		ps.execute();
+		ps.close();
+		
+	}
 }

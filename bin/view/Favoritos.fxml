@@ -22,7 +22,12 @@
                   <Insets left="20.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <Label fx:id="lblFavoritos" text="Meus favoritos" textFill="WHITE">
+                  <Label fx:id="lblFavoritos1" onMouseClicked="#clickDashboard" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblFavoritos" onMouseClicked="#clickFavoritos" text="Meus favoritos" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -30,7 +35,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lblCarteira" text="Minha carteira" textFill="WHITE">
+                  <Label fx:id="lblCarteira" onMouseClicked="#clickMinhaCarteira" text="Minha carteira" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -38,7 +43,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lblSimularCompra" text="Simular compra" textFill="WHITE">
+                  <Label fx:id="lblSimularCompra" onMouseClicked="#clickSimularCompra" text="Simular compra" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -46,7 +51,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="lblSimularVenda" text="Simular venda" textFill="WHITE">
+                  <Label fx:id="lblSimularVenda" onMouseClicked="#clickSimularVenda" text="Simular venda" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -54,12 +59,12 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="Minha conta" textFill="WHITE">
+                  <Label onMouseClicked="#clickMinhaConta" text="Minha conta" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="400.0" />
+                        <Insets top="380.0" />
                      </VBox.margin>
                   </Label>
                </children>
@@ -70,7 +75,7 @@
                <children>
                   <HBox layoutX="14.0" layoutY="66.0" prefHeight="55.0" prefWidth="705.0">
                      <children>
-                        <ComboBox fx:id="cBoxMoeda" prefHeight="45.0" prefWidth="232.0" promptText="Selecione uma Cripto Moeda" style="-fx-background-color: #33cccc;">
+                        <ComboBox fx:id="cBoxMoeda" prefHeight="50.0" prefWidth="279.0" promptText="Selecione uma Cripto Moeda" style="-fx-background-color: #33cccc; -fx-font-size: 14px; -fx-font-weight: BOLDER;">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -83,7 +88,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets bottom="5.0" left="300.0" right="5.0" top="5.0" />
+                              <Insets bottom="5.0" left="250.0" right="5.0" top="5.0" />
                            </HBox.margin>
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -96,12 +101,12 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tbMoedas" layoutX="17.0" layoutY="132.0" prefHeight="501.0" prefWidth="699.0" style="-fx-border-color: #33cccc;">
+                  <TableView fx:id="tbMoedas" layoutX="17.0" layoutY="132.0" prefHeight="501.0" prefWidth="699.0" style="-fx-background-radius: 5px;">
                     <columns>
-                      <TableColumn fx:id="id" prefWidth="50.0" style="-fx-background-color: #33cccc;" text="ID" />
-                        <TableColumn fx:id="descrCoin" prefWidth="325.0" style="-fx-background-color: #33cccc;" text="DESCRIÇÃO MOEDA" />
-                        <TableColumn fx:id="codeApi" prefWidth="148.0" style="-fx-background-color: #33cccc;" text="CODE API" />
-                        <TableColumn fx:id="remove" prefWidth="174.0" style="-fx-background-color: #33cccc;" text="REMOVER" />
+                      <TableColumn fx:id="id" prefWidth="50.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="ID" />
+                        <TableColumn fx:id="descrCoin" prefWidth="325.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DESCRIÇÃO MOEDA" />
+                        <TableColumn fx:id="codeApi" prefWidth="192.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="CODE API" />
+                        <TableColumn fx:id="remove" prefWidth="130.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="REMOVER" />
                     </columns>
                   </TableView>
                </children>

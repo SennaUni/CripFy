@@ -95,7 +95,7 @@ public class UserFxml {
         		} 
         		
     		} catch (ClassNotFoundException | SQLException e) {
-    			JOptionPane.showMessageDialog(null, "Erro na autenticação!" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
+    			JOptionPane.showMessageDialog(null, "Email selecionado já esta em uso, favor selecionar outro", "ERRO", JOptionPane.ERROR_MESSAGE);
     			lblCaptcha.setText(util.getCaptcha());
     			count++;
     		}	
@@ -107,12 +107,15 @@ public class UserFxml {
     void btnRegister(ActionEvent event) {
     	UserController userController = new UserController();
     	
-    	System.out.println(txtRegisterSenha.getText());
-    	System.out.println(txtRegisterConfirmSenha.getText());
-    	
     	if(txtRegisterNome.getText().isEmpty() || txtRegisterContato.getText().isEmpty() || txtRegisterEmail.getText().isEmpty() || txtRegisterSenha.getText().isEmpty()) {
     		JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "ERRO", JOptionPane.ERROR_MESSAGE);
-    	} else if(!util.isNumber(txtRegisterContato.getText()) || txtRegisterContato.getText().length() > 11 || txtRegisterContato.getText().length() < 10){
+    	} else if(txtRegisterNome.getText().length() > 60) {
+    		JOptionPane.showMessageDialog(null, "O campo nome deve ter no máximo 60 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	}else if(txtRegisterEmail.getText().length() > 45) {
+    		JOptionPane.showMessageDialog(null, "O campo email deve ter no máximo 45 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if(txtRegisterSenha.getText().length() > 16 || txtRegisterSenha.getText().length() < 6) {
+    		JOptionPane.showMessageDialog(null, "O campo senha deve ter no mínimo 6 e no máximo 16 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	}else if(!util.isNumber(txtRegisterContato.getText()) || txtRegisterContato.getText().length() > 11 || txtRegisterContato.getText().length() < 10){
     		JOptionPane.showMessageDialog(null, "Favor inserir um contato válido", "ERRO", JOptionPane.ERROR_MESSAGE);
     	} else if(!util.isEmail(txtRegisterEmail.getText())) {
     		JOptionPane.showMessageDialog(null, "Favor inserir um e-mail válido", "ERRO", JOptionPane.ERROR_MESSAGE);

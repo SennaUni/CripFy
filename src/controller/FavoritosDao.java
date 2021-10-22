@@ -84,9 +84,11 @@ public class FavoritosDao implements IFavoritosDao{
 				+ "INNER JOIN Coin c ON "
 				+ "c.id = f.idCoin "
 				+ "INNER JOIN Tb_Usuario u ON "
-				+ "u.id = f.idUser";
+				+ "u.id = f.idUser "
+				+ "WHERE idUser = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setLong(1, UserLogado.getUserId());
 		ResultSet rs = ps.executeQuery();
 		
 		while(rs.next()) {

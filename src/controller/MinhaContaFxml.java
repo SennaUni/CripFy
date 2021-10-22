@@ -2,6 +2,9 @@ package controller;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
+import entity.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import util.SetPages;
 import util.UserLogado;
+import util.util;
 
 public class MinhaContaFxml {
 
@@ -70,12 +74,66 @@ public class MinhaContaFxml {
 
     @FXML
     void btnDelete(ActionEvent event) {
-
+    	try {
+    		if(JOptionPane.showConfirmDialog(null, "Deseja realmente remover?", "Calma lá amigao!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+    			
+        		UserController uc = new UserController();
+     
+        		uc.deleteUser(UserLogado.getUserLogado());
+        		JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!", "SUCESSO", JOptionPane.INFORMATION_MESSAGE); 
+        		UserLogado.LogOffUser();
+            	SetPages.LoginPage(event);
+    		}	
+    	}catch(Exception e) {
+    		JOptionPane.showMessageDialog(null, "Porra miranda" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
+    	}
     }
     
     @FXML
     void btnEditar(ActionEvent event) {
-
+    	if(tBoxSenha.getText().isEmpty() || tBoxNome.getText().isEmpty() || tBoxContato.getText().isEmpty() || tBoxEmail.getText().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if(tBoxNome.getText().length() > 60) {
+    		JOptionPane.showMessageDialog(null, "O campo nome pode ter no máximo 60 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if(tBoxEmail.getText().length() > 45) {
+    		JOptionPane.showMessageDialog(null, "O campo email deve ter no máximo 45 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if(tBoxSenha.getText().length() > 16 || tBoxSenha.getText().length() < 6) {
+    		JOptionPane.showMessageDialog(null, "O campo senha deve ter no mínimo 6 e no máximo 16 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if(!util.isNumber(tBoxContato.getText()) || tBoxContato.getText().length() > 11 || tBoxContato.getText().length() < 10){
+    		JOptionPane.showMessageDialog(null, "Favor inserir um contato válido", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if(!util.isEmail(tBoxEmail.getText())) {
+    		JOptionPane.showMessageDialog(null, "Favor inserir um e-mail válido", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if (!tBoxSenha.getText().equals(UserLogado.getUserPassword())) {
+    		JOptionPane.showMessageDialog(null, "Favor apresentar a senha atual correta!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if (tBoxSenha.getText().equals(tBoxNovaSenha.getText())) {
+    		JOptionPane.showMessageDialog(null, "A nova senha não pode ser igual a atual!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if (tBoxNovaSenha.getText().length() > 16 || tBoxNovaSenha.getText().length() < 6) {
+    		JOptionPane.showMessageDialog(null, "O campo nova senha deve ter no mínimo 6 e no máximo 16 caracteres!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if (!tBoxNovaSenha.getText().equals(tBoxConfirmarSenha.getText())) {
+    		JOptionPane.showMessageDialog(null, "As senhas não apresentam igualdade", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else {
+    		try {
+        		
+        		User user =  new User();
+            	
+        		user.setId(UserLogado.getUserId());
+            	user.setUserName(tBoxNome.getText());
+            	user.setEmail(tBoxEmail.getText());
+            	user.setContato(tBoxContato.getText());
+            	user.setSenha(tBoxSenha.getText());
+            	
+            	UserController uc = new UserController();
+            	
+            	uc.updateUser(user);
+            	
+            	JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!", "SUCESSO", JOptionPane.INFORMATION_MESSAGE);     	
+            	refreshPage();
+            	showForm(false);
+            	
+        	} catch (Exception e) {
+        		JOptionPane.showMessageDialog(null, "Este email já esta ocupado favor selecionar outro", "ERRO", JOptionPane.ERROR_MESSAGE);
+        	}
+    	}
     }
 
     @FXML
@@ -86,7 +144,7 @@ public class MinhaContaFxml {
 
     @FXML
     void btnShowForm(ActionEvent event) {
-    	showForm();
+    	showForm(true);
     	tBoxSenha.setText(UserLogado.getUserPassword());
     	tBoxNome.setText(UserLogado.getUserName());
     	tBoxContato.setText(UserLogado.getUserContato());
@@ -99,8 +157,18 @@ public class MinhaContaFxml {
     }
 
     @FXML
-    void clickFavoritos(MouseEvent event) {
-
+    void clickDashboard(MouseEvent event) throws IOException {
+		SetPages.HomePage(event);
+    }
+    
+    @FXML
+    void clickMinhaConta(MouseEvent event) throws IOException {
+    	SetPages.PerfilPage(event);
+    }
+    
+    @FXML
+    void clickFavoritos(MouseEvent event) throws IOException {
+		SetPages.FavPage(event);
     }
 
     @FXML
@@ -110,29 +178,33 @@ public class MinhaContaFxml {
 
     @FXML
     void clickSimularVenda(MouseEvent event) {
-    	showForm();
+
     }
     
-    public void showForm() {	
-    	lblFormulario.setVisible(true);
-    	lblNomeFormulario.setVisible(true);
-    	lblEmailFormulario.setVisible(true);
-    	lblContatoFormulario.setVisible(true);
-    	lblSenhaAtualFormulario.setVisible(true);
-    	lblNovaSenhaFormulario.setVisible(true);
-    	lblConfirmarSenhaFormulario.setVisible(true);
-    	btnEditar.setVisible(true);
-    	tBoxSenha.setVisible(true);
-    	tBoxNovaSenha.setVisible(true);
-    	tBoxConfirmarSenha.setVisible(true);
-    	tBoxNome.setVisible(true);
-    	tBoxContato.setVisible(true);
-    	tBoxEmail.setVisible(true);
+    public void showForm(Boolean b) {	
+    	lblFormulario.setVisible(b);
+    	lblNomeFormulario.setVisible(b);
+    	lblEmailFormulario.setVisible(b);
+    	lblContatoFormulario.setVisible(b);
+    	lblSenhaAtualFormulario.setVisible(b);
+    	lblNovaSenhaFormulario.setVisible(b);
+    	lblConfirmarSenhaFormulario.setVisible(b);
+    	btnEditar.setVisible(b);
+    	tBoxSenha.setVisible(b);
+    	tBoxNovaSenha.setVisible(b);
+    	tBoxConfirmarSenha.setVisible(b);
+    	tBoxNome.setVisible(b);
+    	tBoxContato.setVisible(b);
+    	tBoxEmail.setVisible(b);
     }
     
-    public void initialize() {
+    public void refreshPage() {
     	lblContato.setText(UserLogado.getUserContato());
         lblNome.setText(UserLogado.getUserName());
         lblEmail.setText(UserLogado.getUserEmail());
+    }
+    
+    public void initialize() {
+    	refreshPage();
 	}
 }

@@ -13,6 +13,12 @@ public class PrincipalFxml {
     @FXML
     private Label lblUser;
     
+
+    @FXML
+    void clickDashboard(MouseEvent event) throws IOException {
+    	SetPages.HomePage(event);
+    }
+    
     @FXML
     void clickCarteira(MouseEvent event) {
     	
@@ -22,6 +28,7 @@ public class PrincipalFxml {
     void clickFavoritos(MouseEvent event) throws IOException {
     	SetPages.FavPage(event);
     }
+    
 
     @FXML
     void clickSimularCompra(MouseEvent event) {
