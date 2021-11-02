@@ -48,8 +48,6 @@ public class UserDao implements IUserDao{
 		
 		ResultSet rs = ps.executeQuery();
 		
-		System.out.println(rs);
-		
 		User user = new User();
 		
 		if(rs.next()) {

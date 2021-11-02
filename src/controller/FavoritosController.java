@@ -23,17 +23,6 @@ public class FavoritosController implements IFavoritosController{
 	}
 
 	@Override
-	public ArrayList<Moeda> selectCoins() throws ClassNotFoundException, SQLException {
-		ArrayList<Moeda> listaDeMoedas = new ArrayList<Moeda>();
-		
-		FavoritosDao fDao = new FavoritosDao();
-		
-		listaDeMoedas = fDao.selectCoins();
-		
-		return listaDeMoedas;
-	}
-
-	@Override
 	public ArrayList<Favorito> selectFav() throws ClassNotFoundException, SQLException {
 		ArrayList<Favorito> listaFavoritos = new ArrayList<Favorito>();
 		

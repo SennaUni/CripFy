@@ -2,9 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 import util.SetPages;
 import util.util;
 import javafx.event.ActionEvent;
@@ -13,7 +11,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
 import entity.User;
 
 public class UserFxml {
@@ -148,6 +145,10 @@ public class UserFxml {
     
     @FXML
     void btnRefresh(ActionEvent event){
-    	lblCaptcha.setText(util.getCaptcha());
+    	//lblCaptcha.setText(util.getCaptcha());
+    	
+    	MoedaController m = new MoedaController();
+    	
+    	m.getApiMoeda();
     }
 }

@@ -1,10 +1,14 @@
 package util;
 
+import java.util.List;
+
+import entity.Moeda;
 import entity.User;
 
 public class UserLogado {
 
 	private static User UserLogado;
+	private static List<Moeda> listaFavoritos;
 
 	public static User getUserLogado() {
 		return UserLogado;

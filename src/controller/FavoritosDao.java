@@ -11,10 +11,6 @@ import util.UserLogado;
 import db.DBConnection;
 import entity.Favorito;
 import entity.Moeda;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 
 public class FavoritosDao implements IFavoritosDao{
 	
@@ -36,30 +32,6 @@ public class FavoritosDao implements IFavoritosDao{
 		
 		ps.execute();
 		ps.close();
-	}
-
-	@Override
-	public ArrayList<Moeda> selectCoins() throws ClassNotFoundException, SQLException {
-		
-		ArrayList<Moeda> listaDeMoedas = new ArrayList<Moeda>();
-		Moeda coin;
-		
-		String sql = "SELECT * FROM Coin";
-		
-		PreparedStatement ps = c.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next()) {
-			coin = new Moeda();
-			
-			coin.setId(rs.getLong("id"));
-			coin.setDescricao(rs.getString("descricao"));
-			coin.setCodeApi(rs.getString("codeApi"));
-			
-			listaDeMoedas.add(coin);
-		}
-		
-		return listaDeMoedas;
 	}
 	
 	@Override

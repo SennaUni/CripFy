@@ -29,7 +29,7 @@ public class Moeda {
 	public void setCodeApi(String codeApi) {
 		this.codeApi = codeApi;
 	}
-
+	
 	@Override
 	public String toString() {
 		String text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1));

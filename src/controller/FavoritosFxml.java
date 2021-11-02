@@ -1,11 +1,7 @@
 package controller;
 
-import java.awt.TrayIcon.MessageType;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.swing.JOptionPane;
 
@@ -18,7 +14,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -27,7 +22,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import util.SetPages;
-import util.UserLogado;
 
 
 public class FavoritosFxml {
@@ -85,14 +79,9 @@ public class FavoritosFxml {
     		try {
         		Moeda moedaName = cBoxMoeda.getValue();
         		
-            	for(Moeda m : listaMoedas) {
-            		if(moedaName.getDescricao() == m.getDescricao()) {
-            			fav.addCoin(m);
-            			JOptionPane.showMessageDialog(null, "Moeda adicionada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            			atualizarTabela();
-            			return;
-            		}
-            	}
+        		fav.addCoin(moedaName);
+    			JOptionPane.showMessageDialog(null, "Moeda adicionada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    			atualizarTabela();
         		
         	} catch (Exception e) {
         		JOptionPane.showMessageDialog(null, "Não é possível adicionar moedas iguais aos favoritos!", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -135,12 +124,13 @@ public class FavoritosFxml {
     void atualizarTabela() {
     	
     	FavoritosController fav = new FavoritosController();
+    	MoedaController moeda = new MoedaController();
     	
     	try {
-    		
-    		listaMoedas = fav.selectCoins();
+
+    		listaMoedas = moeda.selectCoins();
     		listaFavoritos = fav.selectFav();
-    		
+
     		for(Favorito f : listaFavoritos) {
     			Button editar = new Button();
     			
