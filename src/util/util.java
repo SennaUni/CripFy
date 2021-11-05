@@ -1,9 +1,12 @@
 package util;
 
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class util {
+	
+	private static final DecimalFormat dfZero = new DecimalFormat("0.0000");
 	
 	public static boolean isNumber(String valor) {
 		try {  
@@ -46,5 +49,17 @@ public class util {
 		}
 
 		return sb.toString();
+	}
+	
+	public static String convertDolarToReal(String Dolar, String Valor) {
+		 
+		Double result = (Double.parseDouble(Valor.replace(",", ".")) / Double.parseDouble(Dolar.replace(",", ".")));
+
+		return dfZero.format(result).toString();
+	}
+	
+	public static String DoubleQuatroCadasDecimais(Double valor) {
+		 
+		return dfZero.format(valor).toString();
 	}
 }

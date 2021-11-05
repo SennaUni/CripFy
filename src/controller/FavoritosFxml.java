@@ -112,13 +112,13 @@ public class FavoritosFxml {
     }
 
     @FXML
-    void clickSimularCompra(MouseEvent event) {
-
+    void clickSimularCompra(MouseEvent event) throws IOException {
+    	SetPages.CompraPage(event);
     }
 
     @FXML
-    void clickSimularVenda(MouseEvent event) {
-
+    void clickSimularVenda(MouseEvent event) throws IOException {
+    	SetPages.VendaPage(event);
     }
     
     void atualizarTabela() {

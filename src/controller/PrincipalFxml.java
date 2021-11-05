@@ -31,18 +31,17 @@ public class PrincipalFxml {
     
 
     @FXML
-    void clickSimularCompra(MouseEvent event) {
-
+    void clickSimularCompra(MouseEvent event) throws IOException {
+    	SetPages.CompraPage(event);
     }
 
     @FXML
-    void clickSimularVenda(MouseEvent event) {
-
+    void clickSimularVenda(MouseEvent event) throws IOException {
+    	SetPages.VendaPage(event);
     }
     
     @FXML
     void clickMinhaConta(MouseEvent event) throws IOException {
-    	System.out.println("dadasd");
     	SetPages.PerfilPage(event);
     }
     

@@ -53,6 +53,26 @@ public class SetPages {
 		((Node)(event.getSource())).getScene().getWindow().hide();
 	}
 	
+	public static void CompraPage(MouseEvent event) throws IOException{
+		
+		Parent root = FXMLLoader.load(Principal.class.getResource("../View/SimularCompra.fxml"));
+	 	Stage stage = new Stage();
+		stage.setTitle("My New Stage Title");
+		stage.setScene(new Scene(root, 900, 700));
+		stage.show();
+		((Node)(event.getSource())).getScene().getWindow().hide();
+	}
+	
+	public static void VendaPage(MouseEvent event) throws IOException{
+		
+		Parent root = FXMLLoader.load(Principal.class.getResource("../View/SimularVenda.fxml"));
+	 	Stage stage = new Stage();
+		stage.setTitle("My New Stage Title");
+		stage.setScene(new Scene(root, 900, 700));
+		stage.show();
+		((Node)(event.getSource())).getScene().getWindow().hide();
+	}
+	
 	public static void LoginPage(ActionEvent event) throws IOException{
 		
 		Parent root = FXMLLoader.load(Principal.class.getResource("../View/Login.fxml"));

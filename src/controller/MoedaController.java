@@ -13,9 +13,9 @@ public class MoedaController implements IMoedaController{
 	@Override
 	public Moeda getApiMoeda() {
 
-		ApiConnect api = new ApiConnect("adsad");
+		ApiConnect api = new ApiConnect();
 		
-		JSONObject jsonData = (JSONObject) api.getJsonObj().get("ticker");		
+		JSONObject jsonData = (JSONObject) api.getJsonObj("https://www.mercadobitcoin.net/api/", "btc/ticker").get("ticker");		
 		
 		ApiMoeda m = new ApiMoeda();
 		

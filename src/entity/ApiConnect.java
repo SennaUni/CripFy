@@ -9,18 +9,13 @@ import org.json.simple.parser.JSONParser;
 
 public class ApiConnect {
 
-	private final String urlApi;
 	private static HttpURLConnection connection;
 	
-	public ApiConnect(String urlApi) {
-		//this.urlApi = urlApi;
-		this.urlApi = "https://www.mercadobitcoin.net/api/btc/ticker";
-	}
 	
-	public JSONObject getJsonObj() {
+	public JSONObject getJsonObj(String urlApi, String params) {
 
 		try {
-			URL url = new URL(urlApi);
+			URL url = new URL(urlApi + params);
 			connection = (HttpURLConnection) url.openConnection();
 		
 			connection.setRequestMethod("GET");
@@ -43,8 +38,6 @@ public class ApiConnect {
 				scanner.close();
 				
 				JSONParser parse = new JSONParser();
-				
-				System.out.println(ApiContent);	
 				
 				return (JSONObject) parse.parse(String.valueOf(ApiContent));
 			}

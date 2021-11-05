@@ -17,7 +17,7 @@ public class UserLogado {
 	public static void setUserLogado(User userLogado) {
 		UserLogado = userLogado;
 	}
-	
+
 	public static void LogOffUser() {
 		UserLogado = null;
 	}
@@ -40,5 +40,10 @@ public class UserLogado {
 	
 	public static String getUserPassword() {
 		return UserLogado.getSenha();
+	}
+	
+	public static String fulano() {
+		String text = UserLogado.getUserName().substring(0,1).toUpperCase().concat(UserLogado.getUserName().substring(1));
+		return text;
 	}
 }
