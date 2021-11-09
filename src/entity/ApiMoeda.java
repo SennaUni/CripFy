@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import util.util;
 
@@ -25,13 +27,17 @@ public class ApiMoeda extends Moeda{
 		String formattedDate = sdf.format(date);
 		this.data = formattedDate;
 	}
+	
+	public void setDataFormatada(String data) throws ParseException {
+		this.data = data;
+	}
 
 	public String getValorCompra() {
 		return valorCompra;
 	}
 
 	public void setValorCompra(String valorCompra) {
-		this.valorCompra = util.DoubleQuatroCadasDecimais(Double.parseDouble(valorCompra));
+		this.valorCompra = util.DoubleQuatroCasasDecimais(Double.parseDouble(valorCompra.replace(",", ".")));
 	}
 
 	public String getValorVenda() {
@@ -39,7 +45,7 @@ public class ApiMoeda extends Moeda{
 	}
 
 	public void setValorVenda(String valorVenda) {
-		this.valorVenda = util.DoubleQuatroCadasDecimais(Double.parseDouble(valorVenda));
+		this.valorVenda = util.DoubleQuatroCasasDecimais(Double.parseDouble(valorVenda.replace(",", ".")));
 	}
 
 	public String getMaiorValor() {
@@ -60,6 +66,7 @@ public class ApiMoeda extends Moeda{
 	    
 	@Override
 	public String toString() {
-		return "ApiMoeda [descricao = " + getDescricao() + " maiorValor=" + maiorValor + ", menorValor=" + menorValor + "]";
+		String text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1)) + " - " + data.toString();
+		return text;
 	}
 }

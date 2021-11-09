@@ -20,8 +20,8 @@ public class PrincipalFxml {
     }
     
     @FXML
-    void clickCarteira(MouseEvent event) {
-    	
+    void clickCarteira(MouseEvent event) throws IOException {
+    	SetPages.CarteiraPage(event);
     }
 
     @FXML
@@ -46,6 +46,6 @@ public class PrincipalFxml {
     }
     
     public void initialize() {
-    	lblUser.setText("Seja bem vindo(a), "+ UserLogado.getUserName());
+    	lblUser.setText("Seja bem vindo(a), " + UserLogado.fulano());
 	}
 }

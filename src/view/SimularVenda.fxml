@@ -92,7 +92,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cBoxMoeda" layoutX="226.0" layoutY="64.0" prefHeight="50.0" prefWidth="279.0" promptText="Selecione uma Cripto Moeda" style="-fx-background-color: #33cccc; -fx-font-size: 14px; -fx-font-weight: BOLDER;">
+                  <ComboBox fx:id="cBoxMoeda" layoutX="226.0" layoutY="64.0" onAction="#chamarApi" prefHeight="50.0" prefWidth="279.0" promptText="Selecione uma Cripto Moeda" style="-fx-background-color: #33cccc; -fx-font-size: 14px; -fx-font-weight: BOLDER;">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -105,44 +105,30 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="tFieldCompra" layoutX="282.0" layoutY="502.0">
+                  <TextField fx:id="tFieldCompra" alignment="CENTER" layoutX="201.0" layoutY="502.0" prefHeight="37.0" prefWidth="324.0" promptText="Quantidade a Ser Vendida">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font></TextField>
-                  <Pane layoutX="45.0" layoutY="154.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
+                  <Pane layoutX="56.0" layoutY="154.0" prefHeight="85.0" prefWidth="289.0" style="-fx-background-color: #33cccc;">
                      <children>
-                        <Label layoutX="6.0" layoutY="4.0" text="Valor em Dólar" textFill="#fcfcfc">
+                        <Label layoutX="6.0" layoutY="4.0" prefHeight="25.0" prefWidth="242.0" text="Valor de Venda Atual em Reais" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblValorDolar" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="29.0" prefHeight="35.0" prefWidth="165.0" text="\$ 10000" textAlignment="RIGHT" textFill="#fcfcfc">
+                        <Label fx:id="lblValorReal" alignment="CENTER_RIGHT" layoutX="-8.0" layoutY="29.0" prefHeight="53.0" prefWidth="292.0" text="R$ 10000" textAlignment="RIGHT" textFill="#fcfcfc">
                            <font>
-                              <Font name="System Bold" size="36.0" />
+                              <Font name="System Bold" size="32.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="272.0" layoutY="154.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
+                  <Pane layoutX="35.0" layoutY="273.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
                      <children>
-                        <Label layoutX="6.0" layoutY="4.0" text="Valor em Real" textFill="#fcfcfc">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lblValorReal" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="29.0" prefHeight="35.0" prefWidth="165.0" text="R$ 10000" textAlignment="RIGHT" textFill="#fcfcfc">
-                           <font>
-                              <Font name="System Bold" size="36.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="505.0" layoutY="154.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
-                     <children>
-                        <Label layoutX="6.0" layoutY="4.0" text="Data de Referência" textFill="#fcfcfc">
+                        <Label layoutX="6.0" layoutY="4.0" text="Data Atual" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -154,16 +140,16 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="45.0" layoutY="273.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
+                  <Pane layoutX="264.0" layoutY="273.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
                      <children>
                         <Label layoutX="6.0" layoutY="4.0" text="Quantidade em Carteira" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblQtdCarteira" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="29.0" prefHeight="35.0" prefWidth="165.0" text="32 ações" textAlignment="RIGHT" textFill="#fcfcfc">
+                        <Label fx:id="lblQtdCarteira" alignment="CENTER_RIGHT" layoutX="4.0" layoutY="33.0" prefHeight="47.0" prefWidth="190.0" text="32 ações" textAlignment="RIGHT" textFill="#fcfcfc">
                            <font>
-                              <Font name="System Bold" size="36.0" />
+                              <Font name="System Bold" size="32.0" />
                            </font>
                         </Label>
                      </children>
@@ -173,7 +159,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="506.0" layoutY="273.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
+                  <Pane layoutX="492.0" layoutY="273.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
                      <children>
                         <Label layoutX="6.0" layoutY="4.0" text="Data de Compra" textFill="#fcfcfc">
                            <font>
@@ -187,30 +173,30 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="272.0" layoutY="273.0" prefHeight="85.0" prefWidth="200.0" style="-fx-background-color: #33cccc;">
+                  <Label fx:id="lblDescricao" alignment="CENTER" layoutX="25.0" layoutY="391.0" prefHeight="35.0" prefWidth="689.0" text="Rentabilidade" textFill="#33cccc">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOperacao" alignment="CENTER" layoutX="12.0" layoutY="442.0" prefHeight="35.0" prefWidth="701.0" text="Texto back-end" textFill="#33cccc">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="375.0" layoutY="154.0" prefHeight="85.0" prefWidth="288.0" style="-fx-background-color: #33cccc;">
                      <children>
-                        <Label layoutX="6.0" layoutY="4.0" text="Valor Pago em Dolar" textFill="#fcfcfc">
+                        <Label layoutX="6.0" layoutY="4.0" prefHeight="25.0" prefWidth="211.0" text="Valor Pago em Reais" textFill="#fcfcfc">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblValorPago" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="29.0" prefHeight="35.0" prefWidth="165.0" text="\$ 10000" textAlignment="RIGHT" textFill="#fcfcfc">
+                        <Label fx:id="lblValorPago" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="29.0" prefHeight="53.0" prefWidth="281.0" text="\$ 10000" textAlignment="RIGHT" textFill="#fcfcfc">
                            <font>
-                              <Font name="System Bold" size="36.0" />
+                              <Font name="System Bold" size="32.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Label fx:id="lblDescricao" layoutX="287.0" layoutY="391.0" text="Rentabilidade" textFill="#33cccc">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblOperacao" alignment="CENTER" layoutX="82.0" layoutY="442.0" prefHeight="35.0" prefWidth="554.0" text="Texto back-end" textFill="#33cccc">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
                </children>
             </Pane>
          </center>

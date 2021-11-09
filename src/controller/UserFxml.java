@@ -145,10 +145,6 @@ public class UserFxml {
     
     @FXML
     void btnRefresh(ActionEvent event){
-    	//lblCaptcha.setText(util.getCaptcha());
-    	
-    	MoedaController m = new MoedaController();
-    	
-    	m.getApiMoeda();
+    	lblCaptcha.setText(util.getCaptcha());
     }
 }

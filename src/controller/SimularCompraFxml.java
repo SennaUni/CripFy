@@ -5,10 +5,13 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.json.simple.JSONObject;
 
 import entity.ApiConnect;
 import entity.ApiMoeda;
+import entity.Carteira;
 import entity.Moeda;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +35,7 @@ public class SimularCompraFxml {
 	ApiConnect api;
 	Moeda moeda;
 	ApiMoeda moedaApi;
+	Carteira moedaCarteira;
 	List<Moeda> listaMoedas;
 
     @FXML
@@ -66,17 +70,43 @@ public class SimularCompraFxml {
 
     @FXML
     void adicionarMoeda(ActionEvent event) {
+    	MinhaCarteiraController mcc = new MinhaCarteiraController();
     	
+    	if(cBoxMoeda.getValue() == null) {
+    		JOptionPane.showMessageDialog(null, "Favor selecionar uma moeda para adicionar!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if (tFieldQtd.getText().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "Favor informar um investimento!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else if (util.isNumber(tFieldQtd.getText().replace(",", ".")) == false || Double.parseDouble(tFieldQtd.getText().replace(",", ".")) <= 0) {
+    		JOptionPane.showMessageDialog(null, "Favor informar um valor válido para investir!", "ERRO", JOptionPane.ERROR_MESSAGE);
+    	} else {
+    		try {  
+    			moedaCarteira = new Carteira();
+        		
+    			moedaCarteira.setId(moeda.getId());
+    			moedaCarteira.setIdUser(UserLogado.getUserId());
+    			moedaCarteira.setValorCompra(moedaApi.getValorCompra());
+    			moedaCarteira.setDataFormatada(moedaApi.getData());
+    			moedaCarteira.setQuantidade(CalcularFracao(moedaApi.getValorCompra().toString(), tFieldQtd.getText()));
+
+        		mcc.addCoin(moedaCarteira);
+
+    			JOptionPane.showMessageDialog(null, "Moeda adicionada a carteira com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        		
+        	} catch (Exception e) {
+        		JOptionPane.showMessageDialog(null, "Erro" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
+        	}
+    	}
     }
 
     @FXML
     void textChange(KeyEvent event) {
+    	lblTitulo.setText("Favor informar o seu investimento abaixo!");
     	if(!tFieldQtd.getText().isEmpty() && !(moeda == null)) {
-    		if(util.isNumber(tFieldQtd.getText())) {
+    		if(util.isNumber(tFieldQtd.getText().replace(",", ".")) && Double.parseDouble(tFieldQtd.getText().replace(",", ".")) > 0) {
     			lblTitulo.setText("Você esta realizando a compra de " + CalcularFracao(moedaApi.getValorCompra().toString(), tFieldQtd.getText()) + " " + moeda.toString());
         		lblDescricao.setText("Valor investido: R$" + tFieldQtd.getText().toString() + " Reais");
         	} else {
-        		lblTitulo.setText("Favor informar somente números no input abaixo!");
+        		lblTitulo.setText("Favor informar um valor válido para investimento!");
         		lblDescricao.setText("");
         	}
     	} else if(moeda == null) {
@@ -108,7 +138,7 @@ public class SimularCompraFxml {
     	lblDataCompra.setText(moedaApi.getData());
     	lblValorDolar.setText("R$ " + util.convertDolarToReal(jsonDataDolar.get("bid").toString(), moedaApi.getValorCompra()));
     	lblCotacaoDolar.setText("R$ " + jsonDataDolar.get("bid").toString());
-    	lblQtdCompra.setText(util.DoubleQuatroCadasDecimais(Double.parseDouble(jsonData.get("vol").toString())).toString());
+    	lblQtdCompra.setText(util.DoubleQuatroCasasDecimais(Double.parseDouble(jsonData.get("vol").toString())).toString());
     }
 
     @FXML
@@ -122,8 +152,8 @@ public class SimularCompraFxml {
     }
 
     @FXML
-    void clickMinhaCarteira(MouseEvent event) {
-
+    void clickMinhaCarteira(MouseEvent event) throws IOException {
+    	SetPages.CarteiraPage(event);
     }
 
     @FXML
@@ -142,14 +172,14 @@ public class SimularCompraFxml {
     }
     
     public void initialize() throws ClassNotFoundException, SQLException {
+		limparCampos();
+    	lblUser.setText("Seja bem vindo(a), " + UserLogado.fulano());
+    	lblTitulo.setText("Favor informar o seu investimento abaixo!");
+    	
     	MoedaController moeda = new MoedaController();
 		
     	listaMoedas = moeda.selectCoins();
     	ObservableList<Moeda> listaDeMoedas = FXCollections.observableList(listaMoedas);
-    	
-    	lblUser.setText("Seja bem vindo(a), " + UserLogado.fulano());
-		limparCampos();
-    	
 		cBoxMoeda.setItems(listaDeMoedas);
     	
 		api = new ApiConnect();
@@ -160,7 +190,7 @@ public class SimularCompraFxml {
     	
     	Double result = Double.parseDouble(investido.replace(",", ".")) / Double.parseDouble(total.replace(",", "."));
     	
-    	return util.DoubleQuatroCadasDecimais(result).toString();
+    	return util.DoubleOitoCasasDecimais(result).toString();
     }
     
     public void limparCampos() {

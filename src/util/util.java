@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class util {
 	
-	private static final DecimalFormat dfZero = new DecimalFormat("0.0000");
+	private static DecimalFormat dfZero;
 	
 	public static boolean isNumber(String valor) {
 		try {  
@@ -54,12 +54,21 @@ public class util {
 	public static String convertDolarToReal(String Dolar, String Valor) {
 		 
 		Double result = (Double.parseDouble(Valor.replace(",", ".")) / Double.parseDouble(Dolar.replace(",", ".")));
-
+		dfZero = new DecimalFormat("0.0000");
 		return dfZero.format(result).toString();
 	}
 	
-	public static String DoubleQuatroCadasDecimais(Double valor) {
+	public static String DoubleQuatroCasasDecimais(Double valor) {
+		
+		dfZero = new DecimalFormat("0.0000");
+		
+		return dfZero.format(valor).toString();
+	}
+	
+	public static String DoubleOitoCasasDecimais(Double valor) {
 		 
+		dfZero = new DecimalFormat("0.00000000");
+				
 		return dfZero.format(valor).toString();
 	}
 }

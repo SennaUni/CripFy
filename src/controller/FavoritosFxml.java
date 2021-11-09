@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import util.SetPages;
+import util.UserLogado;
 
 
 public class FavoritosFxml {
@@ -64,8 +65,7 @@ public class FavoritosFxml {
 
 
     public void initialize() {
-    	//lblUser.setText("Seja bem vindo(a), " + UserLogado.getUserName());
-    	
+    	lblUser.setText("Seja bem vindo(a), " + UserLogado.fulano());
     	atualizarTabela();
 	}
     
@@ -102,8 +102,8 @@ public class FavoritosFxml {
     }
 
     @FXML
-    void clickMinhaCarteira(MouseEvent event) {
-
+    void clickMinhaCarteira(MouseEvent event) throws IOException {
+    	SetPages.CarteiraPage(event);
     }
 
     @FXML
@@ -132,13 +132,13 @@ public class FavoritosFxml {
     		listaFavoritos = fav.selectFav();
 
     		for(Favorito f : listaFavoritos) {
-    			Button editar = new Button();
+    			Button remover = new Button();
     			
-    			editar.setText("Remover");
-    			editar.setAlignment(Pos.CENTER);
-    			editar.setTextFill(Color.WHITE);
-    			editar.setStyle("-fx-background-color:  #33cccc; ");
-    			editar.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+    			remover.setText("Remover");
+    			remover.setAlignment(Pos.CENTER);
+    			remover.setTextFill(Color.WHITE);
+    			remover.setStyle("-fx-background-color:  #33cccc; ");
+    			remover.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
 
 					@Override
 					public void handle(ActionEvent arg0) {
@@ -157,7 +157,7 @@ public class FavoritosFxml {
 
     			});
     			
-    			f.setButton(editar);
+    			f.setButton(remover);
     		}
     		
     		ObservableList<Moeda> listaDeMoedas = FXCollections.observableList(listaMoedas);

@@ -152,8 +152,8 @@ public class MinhaContaFxml {
     }
 
     @FXML
-    void clickCarteira(MouseEvent event) {
-
+    void clickCarteira(MouseEvent event) throws IOException {
+    	SetPages.CarteiraPage(event);
     }
 
     @FXML
@@ -205,6 +205,7 @@ public class MinhaContaFxml {
     }
     
     public void initialize() {
+    	lblUser.setText("Seja bem vindo(a), " + UserLogado.fulano());
     	refreshPage();
 	}
 }

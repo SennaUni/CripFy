@@ -3,7 +3,7 @@ package entity;
 public class Moeda {
 
 	private Long id;
-    private String descricao;
+    protected String descricao;
     private String codeApi;
     
 	public Long getId() {

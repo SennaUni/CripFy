@@ -11,23 +11,6 @@ import entity.ApiMoeda;
 public class MoedaController implements IMoedaController{
 
 	@Override
-	public Moeda getApiMoeda() {
-
-		ApiConnect api = new ApiConnect();
-		
-		JSONObject jsonData = (JSONObject) api.getJsonObj("https://www.mercadobitcoin.net/api/", "btc/ticker").get("ticker");		
-		
-		ApiMoeda m = new ApiMoeda();
-		
-		m.setMaiorValor(jsonData.get("high").toString());
-		m.setMenorValor(jsonData.get("low").toString());
-		
-		System.out.println(m);
-		
-		return null;
-	}
-
-	@Override
 	public ArrayList<Moeda> selectCoins() throws ClassNotFoundException, SQLException {
 
 		ArrayList<Moeda> listaDeMoedas = new ArrayList<Moeda>();
