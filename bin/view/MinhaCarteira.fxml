@@ -81,11 +81,11 @@
                   </Label>
                   <TableView fx:id="tbMoedas" layoutX="10.0" layoutY="188.0" prefHeight="445.0" prefWidth="706.0" style="-fx-background-radius: 5px;">
                     <columns>
-                        <TableColumn fx:id="descrCoin" prefWidth="171.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DESCRIÇÃO MOEDA" />
-                        <TableColumn fx:id="valor" prefWidth="160.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="VALOR" />
-                        <TableColumn fx:id="quantidade" prefWidth="157.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="QUANTIDADE" />
-                        <TableColumn fx:id="dtCompra" prefWidth="122.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DATA COMPRA" />
-                        <TableColumn fx:id="remover" prefWidth="95.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="REMOVER" />
+                        <TableColumn fx:id="descrCoin" prefWidth="160.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DESCRIÇÃO MOEDA" />
+                        <TableColumn fx:id="valor" prefWidth="146.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="VALOR" />
+                        <TableColumn fx:id="quantidade" prefWidth="152.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="QUANTIDADE" />
+                        <TableColumn fx:id="dtCompra" prefWidth="129.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DATA COMPRA" />
+                        <TableColumn fx:id="remover" prefWidth="118.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="REMOVER" />
                     </columns>
                   </TableView>
                   <DatePicker fx:id="DatePicker" editable="false" layoutX="493.0" layoutY="138.0" prefHeight="35.0" prefWidth="215.0" promptText="Data da Compra" />

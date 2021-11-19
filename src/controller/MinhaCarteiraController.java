@@ -33,4 +33,11 @@ public class MinhaCarteiraController implements IMinhaCarteiraController{
 		return listaCarteira;
 	}
 
+	@Override
+	public void updateCoin(Carteira m) throws ClassNotFoundException, SQLException {
+		MinhaCarteiraDao cDao = new MinhaCarteiraDao();
+		
+		cDao.updateCoin(m);
+	}
+
 }

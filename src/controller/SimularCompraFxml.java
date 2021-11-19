@@ -17,12 +17,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import util.SetPages;
 import util.util;
 import util.UserLogado;
@@ -38,11 +40,17 @@ public class SimularCompraFxml {
 	Carteira moedaCarteira;
 	List<Moeda> listaMoedas;
 
+	JSONObject jsonData;
+	JSONObject jsonDataDolar;
+	
     @FXML
     private Label lblUser;
 
     @FXML
     private ComboBox<Moeda> cBoxMoeda;
+    
+    @FXML
+    private Button btnMoeda;
 
     @FXML
     private TextField tFieldQtd;
@@ -67,6 +75,21 @@ public class SimularCompraFxml {
 
     @FXML
     private Label lblDescricao;
+    
+    @FXML
+    private Pane pane1;
+    
+    @FXML
+    private Pane pane2;
+    
+    @FXML
+    private Pane pane3;
+    
+    @FXML
+    private Pane pane4;
+    
+    @FXML
+    private Pane pane5;
 
     @FXML
     void adicionarMoeda(ActionEvent event) {
@@ -76,7 +99,7 @@ public class SimularCompraFxml {
     		JOptionPane.showMessageDialog(null, "Favor selecionar uma moeda para adicionar!", "ERRO", JOptionPane.ERROR_MESSAGE);
     	} else if (tFieldQtd.getText().isEmpty()) {
     		JOptionPane.showMessageDialog(null, "Favor informar um investimento!", "ERRO", JOptionPane.ERROR_MESSAGE);
-    	} else if (util.isNumber(tFieldQtd.getText().replace(",", ".")) == false || Double.parseDouble(tFieldQtd.getText().replace(",", ".")) <= 0) {
+    	} else if (util.isNumber(tFieldQtd.getText()) == false || util.toDouble(tFieldQtd.getText()) <= 0) {
     		JOptionPane.showMessageDialog(null, "Favor informar um valor válido para investir!", "ERRO", JOptionPane.ERROR_MESSAGE);
     	} else {
     		try {  
@@ -91,7 +114,8 @@ public class SimularCompraFxml {
         		mcc.addCoin(moedaCarteira);
 
     			JOptionPane.showMessageDialog(null, "Moeda adicionada a carteira com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        		
+    			limparCampos();
+    			
         	} catch (Exception e) {
         		JOptionPane.showMessageDialog(null, "Erro" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
         	}
@@ -102,7 +126,7 @@ public class SimularCompraFxml {
     void textChange(KeyEvent event) {
     	lblTitulo.setText("Favor informar o seu investimento abaixo!");
     	if(!tFieldQtd.getText().isEmpty() && !(moeda == null)) {
-    		if(util.isNumber(tFieldQtd.getText().replace(",", ".")) && Double.parseDouble(tFieldQtd.getText().replace(",", ".")) > 0) {
+    		if(util.isNumber(tFieldQtd.getText()) && util.toDouble(tFieldQtd.getText()) > 0) {
     			lblTitulo.setText("Você esta realizando a compra de " + CalcularFracao(moedaApi.getValorCompra().toString(), tFieldQtd.getText()) + " " + moeda.toString());
         		lblDescricao.setText("Valor investido: R$" + tFieldQtd.getText().toString() + " Reais");
         	} else {
@@ -127,18 +151,16 @@ public class SimularCompraFxml {
     	
     	moeda = cBoxMoeda.getValue();
    	
-    	JSONObject jsonData = (JSONObject) api.getJsonObj(apiMoeda, moeda.getCodeApi() + "/ticker").get("ticker");
-    	
-    	JSONObject jsonDataDolar = (JSONObject) api.getJsonObj(apiDolar, "USD-BRL").get("USDBRL");
-    	
-    	moedaApi.setValorCompra(jsonData.get("buy").toString());
-    	moedaApi.setData(jsonData.get("date").toString());
-    	
-    	lblValorReal.setText("$ " +  moedaApi.getValorCompra());
-    	lblDataCompra.setText(moedaApi.getData());
-    	lblValorDolar.setText("R$ " + util.convertDolarToReal(jsonDataDolar.get("bid").toString(), moedaApi.getValorCompra()));
-    	lblCotacaoDolar.setText("R$ " + jsonDataDolar.get("bid").toString());
-    	lblQtdCompra.setText(util.DoubleQuatroCasasDecimais(Double.parseDouble(jsonData.get("vol").toString())).toString());
+    	if(moeda != null) {
+        	jsonData = (JSONObject) api.getJsonObj(apiMoeda, moeda.getCodeApi() + "/ticker").get("ticker");
+        	
+        	jsonDataDolar = (JSONObject) api.getJsonObj(apiDolar, "USD-BRL").get("USDBRL");
+        	
+        	moedaApi.setValorCompra(jsonData.get("buy").toString());
+        	moedaApi.setData(jsonData.get("date").toString());
+        	
+        	showCampos();
+    	}
     }
 
     @FXML
@@ -174,7 +196,6 @@ public class SimularCompraFxml {
     public void initialize() throws ClassNotFoundException, SQLException {
 		limparCampos();
     	lblUser.setText("Seja bem vindo(a), " + UserLogado.fulano());
-    	lblTitulo.setText("Favor informar o seu investimento abaixo!");
     	
     	MoedaController moeda = new MoedaController();
 		
@@ -188,12 +209,28 @@ public class SimularCompraFxml {
     
     public String CalcularFracao(String total, String investido) {
     	
-    	Double result = Double.parseDouble(investido.replace(",", ".")) / Double.parseDouble(total.replace(",", "."));
+    	Double result = util.toDouble(investido) / util.toDouble(total);
     	
-    	return util.DoubleOitoCasasDecimais(result).toString();
+    	return util.DoubleOitoCasasDecimais(result);
+    }
+    
+    public void showCampos() {
+    	pane1.setVisible(true);
+	 	pane2.setVisible(true);
+	 	pane3.setVisible(true);
+	 	pane4.setVisible(true);
+	 	pane5.setVisible(true);
+	 	btnMoeda.setVisible(true);
+	 	tFieldQtd.setVisible(true);
+    	lblValorReal.setText("$ " +  moedaApi.getValorCompra());
+    	lblDataCompra.setText(moedaApi.getData());
+    	lblValorDolar.setText("R$ " + util.convertDolarToReal(jsonDataDolar.get("bid").toString(), moedaApi.getValorCompra()));
+    	lblCotacaoDolar.setText("R$ " + jsonDataDolar.get("bid").toString());
+    	lblQtdCompra.setText(util.DoubleQuatroCasasDecimais(Double.parseDouble(jsonData.get("vol").toString())).toString());
     }
     
     public void limparCampos() {
+    		cBoxMoeda.setValue(null);
     	 	lblValorDolar.setText("");
     	 	lblValorReal.setText("");
     	    lblDataCompra.setText("");
@@ -201,5 +238,12 @@ public class SimularCompraFxml {
     	    lblCotacaoDolar.setText("");
     	    lblTitulo.setText("");
     	    lblDescricao.setText("");
+    	    pane1.setVisible(false);
+    	 	pane2.setVisible(false);
+    	 	pane3.setVisible(false);
+    	 	pane4.setVisible(false);
+    	 	pane5.setVisible(false);
+    	 	btnMoeda.setVisible(false);
+    	 	tFieldQtd.setVisible(false);
     }
 }

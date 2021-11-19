@@ -54,7 +54,7 @@ public class MinhaCarteiraDao implements IMinhaCarteiraDao{
 		ArrayList<Carteira> listaCarteira = new ArrayList<Carteira>();
 		Carteira cart;
 		
-		String sql = "SELECT c.descricao, c.codeApi, ct.valor, ct.quantidade, ct.dataCompra "
+		String sql = "SELECT ct.id, c.descricao, c.codeApi, ct.valor, ct.quantidade, ct.dataCompra "
 				+ "FROM Tb_Carteira ct "
 				+ "INNER JOIN Coin c ON  "
 				+ "c.id = ct.idCoin  "
@@ -74,10 +74,24 @@ public class MinhaCarteiraDao implements IMinhaCarteiraDao{
 			cart.setQuantidade(rs.getString("quantidade"));
 			cart.setDataFormatada(rs.getDate("dataCompra").toString());
 			cart.setCodeApi(rs.getString("codeApi"));
+			cart.setIdCarteira(rs.getInt("id"));
 			
 			listaCarteira.add(cart);
 		}
 		
 		return listaCarteira;
+	}
+
+	@Override
+	public void updateCoin(Carteira m) throws ClassNotFoundException, SQLException {
+		String sql = "UPDATE Tb_Carteira SET quantidade=? WHERE id=?";
+		
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1, m.getQuantidade());
+		ps.setLong(2, m.getIdCarteira());
+
+		ps.execute();
+		ps.close();
+		
 	}
 }

@@ -21,7 +21,7 @@ public class UserDao implements IUserDao{
 
 	@Override
 	public void createUser(User u) throws SQLException {
-		String sql = "INSERT INTO Tb_Usuario VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Tb_Usuario VALUES(?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setString(1, u.getUserName());
@@ -31,6 +31,7 @@ public class UserDao implements IUserDao{
 		ps.setString(5, "F");
 		ps.setTimestamp(6, new Timestamp(System.currentTimeMillis()));
 		ps.setTimestamp(7, null);
+		ps.setTimestamp(8, null);
 		
 		ps.execute();
 		ps.close();
@@ -38,7 +39,37 @@ public class UserDao implements IUserDao{
 
 	@Override
 	public User authUser(User u) throws SQLException {
-		String sql = "SELECT * FROM Tb_Usuario WHERE email = ? AND senha = ?";
+		String sql = "SELECT * FROM Tb_Usuario WHERE email = ? AND senha = ? AND status_removido IS NULL";
+		
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1, u.getEmail());
+		ps.setString(2, u.getSenha());
+		
+		ps.execute();
+		
+		ResultSet rs = ps.executeQuery();
+		
+		User user = new User();
+		
+		if(rs.next()) {
+			user.setId(rs.getLong("id"));
+			user.setUserName(rs.getString("userName"));
+			user.setContato(rs.getString("contato"));
+			user.setSenha(rs.getString("senha"));
+			user.setEmail(rs.getString("email"));
+			user.setPreferencias(rs.getString("status_preferencia"));
+			user.setDataCriacao(rs.getTimestamp("data_Criacao"));
+			user.setDataEdicao(rs.getTimestamp("data_Edicao"));
+		} else {
+			user = null;
+		}
+		
+		return user;
+	}
+	
+	@Override
+	public User authDeletedUser(User u) throws SQLException {
+		String sql = "SELECT * FROM Tb_Usuario WHERE email = ? AND senha = ? AND status_removido = 'T'";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setString(1, u.getEmail());
@@ -66,6 +97,19 @@ public class UserDao implements IUserDao{
 		return user;
 	}
 
+	@Override
+	public void updateDeletedUser(User u) throws SQLException {
+		String sql = "UPDATE Tb_Usuario"
+				+ " SET status_removido = NULL"
+				+ " WHERE email = ?";
+		
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1, u.getEmail());
+		
+		ps.execute();
+		ps.close();
+	}
+	
 	@Override
 	public void updateUser(User u) throws SQLException {
 		String sql = "UPDATE Tb_Usuario"
@@ -116,10 +160,13 @@ public class UserDao implements IUserDao{
 
 	@Override
 	public void deleteUser(User u) throws SQLException {
-		String sql = "DELETE Tb_Usuario WHERE id = ?";
+		String sql = "UPDATE Tb_Usuario"
+				+ " SET status_removido = ?"
+				+ " WHERE id = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
-		ps.setLong(1, u.getId());
+		ps.setString(1, "T");
+		ps.setLong(2, u.getId());
 		
 		ps.execute();
 		ps.close();

@@ -40,5 +40,15 @@ public class Carteira extends ApiMoeda{
 	public void setButtonCarteira(Button buttonCarteira) {
 		this.buttonCarteira = buttonCarteira;
 	}
+	
+	@Override
+	public String toString() {
+		String text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1)) + " - " + getData();
+		return text;
+	}
 
+	public String toStringSemData() {
+		String text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1));
+		return text;
+	}
 }

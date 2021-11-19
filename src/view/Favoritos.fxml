@@ -103,10 +103,9 @@
                   </Label>
                   <TableView fx:id="tbMoedas" layoutX="17.0" layoutY="132.0" prefHeight="501.0" prefWidth="699.0" style="-fx-background-radius: 5px;">
                     <columns>
-                      <TableColumn fx:id="id" prefWidth="50.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="ID" />
-                        <TableColumn fx:id="descrCoin" prefWidth="325.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DESCRIÇÃO MOEDA" />
-                        <TableColumn fx:id="codeApi" prefWidth="192.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="CODE API" />
-                        <TableColumn fx:id="remove" prefWidth="130.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="REMOVER" />
+                        <TableColumn fx:id="descrCoin" prefWidth="284.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="DESCRIÇÃO MOEDA" />
+                        <TableColumn fx:id="codeApi" prefWidth="274.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="CODE API" />
+                        <TableColumn fx:id="remove" prefWidth="140.0" style="-fx-text-alignment: CENTER; -fx-font-size: 14 px; -fx-background-radius: 5px; -fx-alignment: CENTER;" text="REMOVER" />
                     </columns>
                   </TableView>
                </children>

@@ -128,6 +128,8 @@ public class MinhaCarteiraFxml {
         		mcc.addCoin(moedaCarteira);
 
     			JOptionPane.showMessageDialog(null, "Moeda adicionada a carteira com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    			
+    			atualizarTabela();
         		
         	} catch (Exception e) {
         		JOptionPane.showMessageDialog(null, "Erro" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -208,7 +210,7 @@ public class MinhaCarteiraFxml {
 								
 								try {
 									cart.removeCoin(c);
-									JOptionPane.showMessageDialog(null, "Favorito removido com sucesso!", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+									JOptionPane.showMessageDialog(null, "Favorito removido com sucesso!", "Operação Realizada", JOptionPane.INFORMATION_MESSAGE);
 									atualizarTabela();
 								} catch (Exception e) {
 									JOptionPane.showMessageDialog(null, "Ops ocorreu um erro inesperado!" + e, "ERRO", JOptionPane.ERROR_MESSAGE);

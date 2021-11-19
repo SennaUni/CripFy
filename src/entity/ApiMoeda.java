@@ -1,11 +1,7 @@
 package entity;
 
-import java.sql.Timestamp;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import util.util;
 
@@ -13,6 +9,8 @@ public class ApiMoeda extends Moeda{
 
     private String maiorValor;
     private String menorValor;
+    private String quantidadeNegociada;
+    private String ultimoValor;
     private String valorCompra;
     private String valorVenda;
 	private String data;
@@ -37,7 +35,11 @@ public class ApiMoeda extends Moeda{
 	}
 
 	public void setValorCompra(String valorCompra) {
-		this.valorCompra = util.DoubleQuatroCasasDecimais(Double.parseDouble(valorCompra.replace(",", ".")));
+		this.valorCompra = util.DoubleQuatroCasasDecimais(valorCompra);
+	}
+	
+	public void setValorCompraSifrao(String valorCompra) {
+		this.valorCompra = valorCompra;
 	}
 
 	public String getValorVenda() {
@@ -45,7 +47,11 @@ public class ApiMoeda extends Moeda{
 	}
 
 	public void setValorVenda(String valorVenda) {
-		this.valorVenda = util.DoubleQuatroCasasDecimais(Double.parseDouble(valorVenda.replace(",", ".")));
+		this.valorVenda = util.DoubleQuatroCasasDecimais(valorVenda);
+	}
+	
+	public void setValorVendaSifrao(String valorVenda) {
+		this.valorVenda = valorVenda;
 	}
 
 	public String getMaiorValor() {
@@ -66,7 +72,28 @@ public class ApiMoeda extends Moeda{
 	    
 	@Override
 	public String toString() {
-		String text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1)) + " - " + data.toString();
+		String text;
+		if(data == null) {
+			text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1));	
+		} else {
+			text = descricao.substring(0,1).toUpperCase().concat(descricao.substring(1)) + " - " + data.toString();
+		}
 		return text;
+	}
+
+	public String getQuantidadeNegociada() {
+		return quantidadeNegociada;
+	}
+
+	public void setQuantidadeNegociada(String quantidadeNegociada) {
+		this.quantidadeNegociada = quantidadeNegociada;
+	}
+
+	public String getUltimoValor() {
+		return ultimoValor;
+	}
+
+	public void setUltimoValor(String ultimoValor) {
+		this.ultimoValor = ultimoValor;
 	}
 }

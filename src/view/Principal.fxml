@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -33,7 +36,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label onMouseClicked="#clickCarteira" text="Minha carteira" textFill="WHITE">
+                  <Label onMouseClicked="#clickMinhaCarteira" text="Minha carteira" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -71,79 +74,64 @@
          <center>
             <Pane prefHeight="614.0" prefWidth="734.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="14.0" layoutY="66.0" prefHeight="130.0" prefWidth="705.0">
+                  <HBox layoutX="13.0" layoutY="82.0" prefHeight="78.0" prefWidth="705.0">
                      <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #33cccc; -fx-background-radius: 10;">
+                        <Pane fx:id="pane1" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: #33cccc; -fx-background-radius: 6;">
                            <HBox.margin>
-                              <Insets left="30.0" right="30.0" />
+                              <Insets right="10.0" />
                            </HBox.margin>
                            <padding>
                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </padding>
                            <children>
-                              <Label layoutX="14.0" layoutY="14.0" text="Titulo" textFill="WHITE">
+                              <Label layoutX="7.0" layoutY="4.0" text="Valor mínimo" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="16.0" layoutY="53.0" text="Moeda" textFill="WHITE">
+                              <Label fx:id="lblValMin" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="33.0" prefHeight="25.0" prefWidth="206.0" text="Descrição" textFill="WHITE">
                                  <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="16.0" layoutY="91.0" text="Descrição" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
+                                    <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #33cccc; -fx-background-radius: 10;">
+                        <Pane fx:id="pane2" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: #33cccc; -fx-background-radius: 6;">
                            <padding>
                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets left="30.0" right="30.0" />
+                              <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <children>
-                              <Label layoutX="14.0" layoutY="14.0" text="Titulo" textFill="WHITE">
+                              <Label layoutX="7.0" layoutY="5.0" text="Valor atual" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="16.0" layoutY="53.0" text="Moeda" textFill="WHITE">
+                              <Label fx:id="lblValAtual" alignment="CENTER_RIGHT" layoutX="9.0" layoutY="33.0" prefHeight="25.0" prefWidth="207.0" text="Descrição" textFill="WHITE">
                                  <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="16.0" layoutY="91.0" text="Descrição" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
+                                    <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #33cccc; -fx-background-radius: 10;">
+                        <Pane fx:id="pane3" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: #33cccc; -fx-background-radius: 6;">
                            <padding>
                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </padding>
                            <HBox.margin>
-                              <Insets left="30.0" right="30.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                            <children>
-                              <Label layoutX="14.0" layoutY="14.0" text="Titulo" textFill="WHITE">
+                              <Label layoutX="7.0" layoutY="4.0" text="Valor máximo" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="16.0" layoutY="53.0" text="Moeda" textFill="WHITE">
+                              <Label fx:id="lblValMax" alignment="CENTER_RIGHT" layoutX="12.0" layoutY="33.0" prefHeight="25.0" prefWidth="203.0" text="Descrição" textFill="WHITE">
                                  <font>
-                                    <Font name="System Bold" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="16.0" layoutY="91.0" text="Descrição" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="16.0" />
+                                    <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
                            </children>
@@ -155,19 +143,84 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="17.0" layoutY="224.0" prefHeight="409.0" prefWidth="699.0" style="-fx-border-color: #33cccc;">
-                    <columns>
-                      <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                      <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #33cccc;" text="Teste" />
-                    </columns>
-                  </TableView>
+                  <ComboBox fx:id="cBoxMoeda" layoutX="245.0" layoutY="18.0" onAction="#ChamarApi" prefHeight="52.0" prefWidth="242.0" style="-fx-background-color: #33cccc; -fx-font-size: 14px; -fx-font-weight: BOLDER;">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </ComboBox>
+                  <HBox layoutX="14.0" layoutY="172.0" prefHeight="78.0" prefWidth="705.0">
+                     <children>
+                        <Pane fx:id="pane4" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: #33cccc; -fx-background-radius: 6;">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                           <children>
+                              <Label layoutX="5.0" layoutY="5.0" text="Menor preço negociado" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblMinNeg" alignment="CENTER_RIGHT" layoutX="8.0" layoutY="33.0" prefHeight="25.0" prefWidth="209.0" text="Descrição" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pane5" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: #33cccc; -fx-background-radius: 6;">
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label layoutX="5.0" layoutY="4.0" text="Negociações diárias" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblNegs" alignment="CENTER_RIGHT" layoutX="8.0" layoutY="32.0" prefHeight="25.0" prefWidth="208.0" text="Descrição" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="pane6" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: #33cccc; -fx-background-radius: 6;">
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label layoutX="7.0" layoutY="5.0" text="Maior preço negociado" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblMaxNeg" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="33.0" prefHeight="25.0" prefWidth="207.0" text="Descrição" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <PieChart fx:id="grafico" animated="false" layoutX="-20.0" layoutY="256.0" prefHeight="378.0" prefWidth="305.0" />
+                  <BarChart fx:id="barChart" animated="false" layoutX="283.0" layoutY="259.0" prefHeight="378.0" prefWidth="442.0">
+                    <xAxis>
+                      <CategoryAxis prefHeight="37.0" prefWidth="364.0" side="BOTTOM" fx:id="x" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="y" label="Valores" side="LEFT" />
+                    </yAxis>
+                  </BarChart>
                </children>
             </Pane>
          </center>

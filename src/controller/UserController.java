@@ -20,6 +20,20 @@ public class UserController implements IUserController{
 			return true;
 		}
 	}
+	
+	@Override
+	public Boolean authDeletedUser(User u) throws ClassNotFoundException, SQLException {
+		UserDao uDao = new UserDao();
+		
+		User userLog = uDao.authDeletedUser(u);
+		
+		if(userLog == null) {
+			return false;
+		} else {
+			UserLogado.setUserLogado(userLog);
+			return true;
+		}
+	}
 
 	@Override
 	public void createUser(User u) throws ClassNotFoundException, SQLException {
@@ -38,6 +52,13 @@ public class UserController implements IUserController{
 		
 		UserLogado.setUserLogado(userLog);
 	}
+	
+	@Override
+	public void updateDeletedUser(User u) throws ClassNotFoundException, SQLException {
+		UserDao uDao = new UserDao();
+		
+		uDao.updateDeletedUser(u);		
+	}
 
 	@Override
 	public void deleteUser(User u) throws ClassNotFoundException, SQLException {
@@ -45,5 +66,4 @@ public class UserController implements IUserController{
 		
 		uDao.deleteUser(u);
 	}
-	
 }

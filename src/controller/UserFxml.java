@@ -82,9 +82,23 @@ public class UserFxml {
             	if (userLog) {
             		SetPages.HomePage(event);
             	} else {
-            		JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "ERRO", JOptionPane.ERROR_MESSAGE);
-            		lblCaptcha.setText(util.getCaptcha());
-            		count++;
+            		
+            		Boolean userDeleteLog = userController.authDeletedUser(u);
+            		
+            		if (userDeleteLog) {
+            			
+            			if(JOptionPane.showConfirmDialog(null, "Deseja recuperar esta usuário?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+            				
+            				JOptionPane.showMessageDialog(null, "Usuário recuperado com sucesso", "Operação Realizada", JOptionPane.INFORMATION_MESSAGE);
+            				userController.updateDeletedUser(u);
+            				SetPages.HomePage(event);
+            			}
+                		
+                	} else {
+                		JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "ERRO", JOptionPane.ERROR_MESSAGE);
+                		lblCaptcha.setText(util.getCaptcha());
+                		count++;
+                	}
             	}
             	
         		if(count >= 4) {
@@ -92,7 +106,7 @@ public class UserFxml {
         		} 
         		
     		} catch (ClassNotFoundException | SQLException e) {
-    			JOptionPane.showMessageDialog(null, "Email selecionado já esta em uso, favor selecionar outro", "ERRO", JOptionPane.ERROR_MESSAGE);
+    			JOptionPane.showMessageDialog(null, "Email selecionado já esta em uso, favor selecionar outro"+ e, "ERRO", JOptionPane.ERROR_MESSAGE);
     			lblCaptcha.setText(util.getCaptcha());
     			count++;
     		}	
@@ -138,7 +152,7 @@ public class UserFxml {
             	txtRegisterConfirmSenha.setText("");
         		
     		}catch (ClassNotFoundException | SQLException e) {
-    			JOptionPane.showMessageDialog(null, "Erro na inserção!" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
+    			JOptionPane.showMessageDialog(null, "Email em uso, favor selecionar outro!", "ERRO", JOptionPane.ERROR_MESSAGE);
     		}	
     	}
     }

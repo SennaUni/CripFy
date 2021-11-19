@@ -10,11 +10,15 @@ public class util {
 	
 	public static boolean isNumber(String valor) {
 		try {  
-		    Double.parseDouble(valor);  
+		    Double.parseDouble(valor.replace(",", "."));  
 		    return true;
 		  } catch(NumberFormatException e){  
 		    return false;  
 		  }  
+	}
+	
+	public static Double toDouble(String valor) {
+	    return Double.parseDouble(valor.replace(",", "."));  
 	}
 	
 	private static final String EMAIL_PATTERN = 
@@ -58,6 +62,20 @@ public class util {
 		return dfZero.format(result).toString();
 	}
 	
+	public static String DoubleDuasCasasDecimais(Double valor) {
+		
+		dfZero = new DecimalFormat("0.00");
+		
+		return dfZero.format(valor).toString();
+	}
+	
+	public static String DoubleDuasCasasDecimais(String valor) {
+		
+		dfZero = new DecimalFormat("0.00");
+				
+		return dfZero.format(Double.parseDouble((valor).replace(",", ".")));
+	}
+	
 	public static String DoubleQuatroCasasDecimais(Double valor) {
 		
 		dfZero = new DecimalFormat("0.0000");
@@ -65,10 +83,24 @@ public class util {
 		return dfZero.format(valor).toString();
 	}
 	
+	public static String DoubleQuatroCasasDecimais(String valor) {
+		
+		dfZero = new DecimalFormat("0.0000");
+		
+		return dfZero.format(Double.parseDouble((valor).replace(",", ".")));
+	}
+	
 	public static String DoubleOitoCasasDecimais(Double valor) {
 		 
 		dfZero = new DecimalFormat("0.00000000");
 				
 		return dfZero.format(valor).toString();
+	}
+	
+	public static String DoubleOitoCasasDecimais(String valor) {
+		 
+		dfZero = new DecimalFormat("0.00000000");
+				
+		return dfZero.format(Double.parseDouble((valor).replace(",", ".")));
 	}
 }

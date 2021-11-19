@@ -147,7 +147,7 @@ public class FavoritosFxml {
 							
 							try {
 								fav.removeCoin(f);
-								JOptionPane.showMessageDialog(null, "Favorito removido com sucesso!", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Favorito removido com sucesso!", "Operação Realizada", JOptionPane.INFORMATION_MESSAGE);
 								atualizarTabela();
 							} catch (Exception e) {
 								JOptionPane.showMessageDialog(null, "Ops ocorreu um erro inesperado!" + e, "ERRO", JOptionPane.ERROR_MESSAGE);
